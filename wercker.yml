@@ -25,6 +25,7 @@ build:
     - script:
         name: move output
         code: |
+            mv *.template $WERCKER_OUTPUT_DIR/
             mv build $WERCKER_OUTPUT_DIR
 
 # Push Docker Image
