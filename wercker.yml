@@ -11,6 +11,12 @@ dev:
 # Build Application
 build:
   steps:
+
+    - script:
+        name: npm
+        code: |
+            npm install
+
     - script:
         name: build
         code: |
