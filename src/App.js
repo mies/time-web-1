@@ -15,7 +15,7 @@ class App extends Component {
     componentWillMount() {
     var self = this;
 
-    var endpoint = process.env.API_URL || 'http://localhost:8080/time';
+    var endpoint = 'http://time-web.demo.wercker.com/time';
 
     axios.get(endpoint)
     .then(function (response) {
