@@ -14,7 +14,10 @@ class App extends Component {
 
     componentWillMount() {
     var self = this;
-    axios.get('http://localhost:8080/time')
+
+    var endpoint = process.env.API_URL || 'http://localhost:8080/time';
+
+    axios.get(endpoint)
     .then(function (response) {
       console.log(response)
       self.setState({
