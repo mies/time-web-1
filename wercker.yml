@@ -1,11 +1,17 @@
 box: node
 
+services:
+  - name: time API
+    id: $WERCKER_APPLICATION_OWNER_NAME/time-api
+    tag: master
+
 # Developer
 dev:
   steps:
     - script:
       name: yarn
       code: |
+        export REACT_APP_API_ENDPOINT=$TIME_API_ENDPOINT
         yarn start
 
 # Build Application
@@ -20,7 +26,14 @@ build:
     - script:
         name: build
         code: |
+            export REACT_APP_API_ENDPOINT=$TIME_API_ENDPOINT
             yarn build
+
+    # Curl should return a falsey exit code if the API endpoint isn't up.
+    - script:
+        name: Test API endpoint
+        code: |
+            curl --silent $TIME_API_ENDPOINT >> /dev/null 2>&1
 
     - script:
         name: move output

@@ -1,3 +1,7 @@
+body {
+  background-color: #6e418c;
+}
+
 .App {
   text-align: center;
 }
@@ -7,11 +11,15 @@
   height: 80px;
 }
 
+.walter-logo {
+  animation: walter-spin infinite 20s linear;
+}
+
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  background-color: #f3faff;
+  height: 50%;
+  padding: 50px;
+  color: #6e418c;
 }
 
 .App-intro {

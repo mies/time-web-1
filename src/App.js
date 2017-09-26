@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import walter from './walter.gif';
 import './App.css';
 import axios from 'axios';
 
@@ -15,7 +16,7 @@ class App extends Component {
     componentWillMount() {
     var self = this;
 
-    var endpoint = 'http://time-api.demo.wercker.com/time';
+    var endpoint = process.env.REACT_APP_API_ENDPOINT || "http://localhost:8000/time";
 
     axios.get(endpoint)
     .then(function (response) {
@@ -34,6 +35,8 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <br />
+          <img src={walter} className="walter-logo" alt="logo" />
           <h2>The time is {this.state.time}</h2>
         </div>
       </div>

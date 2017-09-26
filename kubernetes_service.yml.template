@@ -13,7 +13,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 8000
+    targetPort: 3000
   selector:
     app: time-web
     commit: ${WERCKER_GIT_COMMIT}
@@ -26,10 +26,10 @@ metadata:
   name: time-web-ingress
 spec:
   rules:
-  - host: time-web.demo.wercker.com
+  - host: time-web.${WERCKER_STARTED_BY}.demo.wercker.com
     http:
       paths:
       - path:
         backend:
           serviceName: time-web
-          servicePort: 8000
+          servicePort: 3000
