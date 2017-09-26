@@ -1,6 +1,4 @@
 box: node
-services:
-  - id: wcr.io/wercker/time-api:master
 
 # Developer
 dev:
@@ -13,7 +11,14 @@ dev:
 
 # Build Application
 build:
+  services:
+    - id: wcr.io/wercker/time-api:master
   steps:
+
+    - script:
+        name: Test
+        code: |
+            env
 
     - script:
         name: npm
