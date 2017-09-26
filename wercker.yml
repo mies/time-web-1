@@ -50,12 +50,9 @@ push-image:
                 yarn global add serve
 
         - internal/docker-push:
-            username: $DOCKERHUB_USERNAME
-            password: $DOCKERHUB_PASSWORD
             cmd: serve -s /pipeline/source/build -p 8000
-            tag: time-web-$WERCKER_GIT_COMMIT
+            tag: $WERCKER_GIT_COMMIT
             ports: "8000"
-            repository: riceo/sandbox
 
 # Deploy to a Kubernetes cluster
 deploy-to-kubernetes:
@@ -64,26 +61,6 @@ deploy-to-kubernetes:
         id: alpine
         cmd: /bin/sh
     steps:
-
-    # Create some Kubernetes authentications certificates to interact with.
-    - create-file:
-        name: Create Kubernetes CA
-        filename: ca.pem
-        overwrite: true
-        content: $KUBERNETES_CA
-
-    - create-file:
-        name: Create Kubernetes Client Cert
-        filename: cert.pem
-        overwrite: true
-        content: $KUBERNETES_CLIENT_CERT
-
-    - create-file:
-        name: Create Kubernetes Client Key
-        filename: key.pem
-        overwrite: true
-        content: $KUBERNETES_CLIENT_KEY
-
     # https://github.com/wercker/step-bash-template
     # This Wercker step will look for files in our repo with a .template extension.
     # It will expand any environment variables in those files, then remove the
@@ -95,16 +72,14 @@ deploy-to-kubernetes:
     - script:
         name: Prepare Kubernetes files
         code: |
+          ls -lth
+          cat kubernetes_deployment.yml
           mkdir $WERCKER_OUTPUT_DIR/kubernetes
           mv kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
 
-    # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing.
     - kubectl:
         name: deploy to kubernetes
         server: $KUBERNETES_MASTER
-        certificate-authority: ca.pem
-        client-certificate: cert.pem
-        client-key: key.pem
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
         command: apply -f $WERCKER_OUTPUT_DIR/kubernetes/
-
-

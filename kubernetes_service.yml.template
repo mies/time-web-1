@@ -13,7 +13,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 3000
+    targetPort: 8000
   selector:
     app: time-web
     commit: ${WERCKER_GIT_COMMIT}
@@ -32,4 +32,4 @@ spec:
       - path:
         backend:
           serviceName: time-web
-          servicePort: 3000
+          servicePort: 8000
