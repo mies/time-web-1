@@ -2,7 +2,7 @@ box: node
 
 services:
   - name: time API
-    id: $WERCKER_APPLICATION_OWNER_NAME/time-api
+    id: wcr.io/wercker/time-api
     tag: master
 
 # Developer
