@@ -36,7 +36,8 @@ build:
         name: Test API endpoint
         code: |
             local_api_endpoint="http://${TIME_API_PORT_8080_TCP_ADDR}:${TIME_API_PORT_8080_TCP_PORT}"
-            curl --silent $local_api_endpoint >> /dev/null 2>&1
+            curl --silent $local_api_endpoint
+            echo $?
 
     - script:
         name: move output
