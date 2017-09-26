@@ -1,8 +1,6 @@
 box: node
 services:
-  - id: wcr.io/wercker/time-api
-    tag: master
-    registry: wcr.io
+  - id: wcr.io/wercker/time-api:master
 
 # Developer
 dev:
