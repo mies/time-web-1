@@ -16,12 +16,7 @@ build:
   steps:
 
     - script:
-        name: Test
-        code: |
-            env
-
-    - script:
-        name: npm
+        name: Install Dependencies
         code: |
             npm install
 
@@ -35,7 +30,7 @@ build:
     - script:
         name: Test API endpoint
         code: |
-            local_api_endpoint="http://${TIME_API_PORT_8080_TCP_ADDR}:${TIME_API_PORT_8080_TCP_PORT}"
+            local_api_endpoint="http://${TIME_API_PORT_8080_TCP_ADDR}:${TIME_API_PORT_8080_TCP_PORT}/time"
             curl --silent $local_api_endpoint
             echo $?
 
