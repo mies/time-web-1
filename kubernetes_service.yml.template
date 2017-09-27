@@ -17,13 +17,16 @@ spec:
   selector:
     app: time-web
     commit: ${WERCKER_GIT_COMMIT}
-  type: ClusterIP
+  type: NodePort
 ---
 # Ingress
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: time-web-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
   - host: time-web.demo.wercker.com
