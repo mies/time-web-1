@@ -9,7 +9,7 @@ metadata:
   labels:
     commit: ${WERCKER_RUN_ID}
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: time-web
