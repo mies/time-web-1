@@ -17,6 +17,7 @@ spec:
   selector:
     app: time-web
     commit: ${WERCKER_GIT_COMMIT}
+  type: ClusterIP
 ---
 # Ingress
 apiVersion: extensions/v1beta1
