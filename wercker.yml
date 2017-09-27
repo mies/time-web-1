@@ -12,7 +12,7 @@ dev:
 # Build Application
 build:
   services:
-    - id: wcr.io/OOW17Demos/time-api:master
+    - id: wcr.io/wercker/time-api:master
   steps:
 
     - script:
@@ -53,7 +53,6 @@ push-image:
             cmd: serve -s /pipeline/source/build -p 8000
             tag: $WERCKER_GIT_COMMIT
             ports: "8000"
-            registry: wcr.io
 
 # Deploy to a Kubernetes cluster
 deploy-to-kubernetes:
