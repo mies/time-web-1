@@ -26,7 +26,7 @@ metadata:
   name: time-web-ingress
 spec:
   rules:
-  - host: time-web.${WERCKER_STARTED_BY}.demo.wercker.com
+  - host: time-web.demo.wercker.com
     http:
       paths:
       - path:
