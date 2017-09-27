@@ -12,7 +12,7 @@ dev:
 # Build Application
 build:
   services:
-    - id: wcr.io/wercker/time-api:master
+    - id: wcr.io/${WERCKER_APPLICATION_OWNER_NAME}/time-api:master
   steps:
 
     - script:
