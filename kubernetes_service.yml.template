@@ -30,7 +30,7 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
-  - host: time-web.demo.wercker.com
+  - host: time-web.${WERCKER_APPLICATION_OWNER_NAME}.demo.wercker.com
     http:
       paths:
       - path:
