@@ -37,7 +37,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <br />
           <img src={walter} className="walter-logo" alt="logo" />
-          <h2>The time is {this.state.time}</h2>
+          <h2>The time is now {this.state.time}</h2>
         </div>
       </div>
     );
